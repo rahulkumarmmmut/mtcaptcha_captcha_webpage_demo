@@ -1,9 +1,10 @@
+// Remove dotenv - Vercel handles env vars automatically
 const express = require("express");
 const https = require("https");
 const path = require("path");
 const app = express();
 
-// MTCaptcha Private Key
+// MTCaptcha Private Key - Vercel injects this directly
 const MTCAPTCHA_PRIVATE_KEY = process.env.MTCAPTCHA_PRIVATE_KEY;
 
 // In-memory user storage (for demonstration purposes)
@@ -79,5 +80,5 @@ app.post("/register", (req, res) => {
   });
 });
 
-// FIX 2: Change "export default app" to "module.exports = app"
+// Export for Vercel
 module.exports = app;
