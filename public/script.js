@@ -6,28 +6,35 @@ document.addEventListener("DOMContentLoaded", () => {
       const email = document.getElementById("registerEmail").value.trim();
       const password = document.getElementById("registerPassword").value;
       const confirmPassword = document.getElementById("registerConfirmPassword").value;
+      
       if (!name || !email || !password) {
         alert("Please fill out all required fields.");
         return;
       }
+      
       if (password !== confirmPassword) {
         alert("Passwords do not match. Please try again.");
         return;
       }
+      
       const captchaField = document.querySelector('input[name="mtcaptcha-verifiedtoken"]');
       if (!captchaField || !captchaField.value) {
         alert("Please complete the CAPTCHA verification.");
         return;
       }
+      
       const captchaToken = captchaField.value;
-      const data = { name: name, email: email, password: password, token: captchaToken };
+      const data = { name, email, password, token: captchaToken };
+      
       try {
         const response = await fetch("/register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
         });
+        
         const result = await response.json();
+        
         if (result.success) {
           alert("Registration successful!");
         } else {
@@ -38,4 +45,4 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("An error occurred. Please try again.");
       }
     });
-  });
+});
