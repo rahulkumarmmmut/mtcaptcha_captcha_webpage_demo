@@ -1,6 +1,3 @@
-// FIX 1: Change require()() to require()
-require('dotenv').config();
-
 const express = require("express");
 const https = require("https");
 const path = require("path");
