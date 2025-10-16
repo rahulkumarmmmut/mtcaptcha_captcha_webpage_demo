@@ -1,4 +1,5 @@
-require()("dotenv").config();
+// FIX 1: Change require()() to require()
+require('dotenv').config();
 
 const express = require("express");
 const https = require("https");
@@ -77,4 +78,5 @@ app.post("/register", (req, res) => {
   });
 });
 
-export default app;
+// FIX 2: Change "export default app" to "module.exports = app"
+module.exports = app;
