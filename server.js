@@ -77,4 +77,4 @@ app.post("/register", (req, res) => {
   });
 });
 
-module.exports = app;
+default export app;
