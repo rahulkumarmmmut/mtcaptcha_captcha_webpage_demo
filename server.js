@@ -24,6 +24,10 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
+app.get("/users", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "users.html"));
+});
+
 // Registration route (CAPTCHA validation enforced)
 app.post("/register", (req, res) => {
   const { name, email, password, token } = req.body;
